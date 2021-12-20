@@ -1,0 +1,8 @@
+# builds directoires
+build/
+
+# compile commands
+compile_commands.json
+
+# ccls
+.ccls-cache/
