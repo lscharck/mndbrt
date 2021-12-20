@@ -1,2 +1,2 @@
 # mndbrt
-Offical repository of the mandelbrot project.
+Offical repository of the Mandelbrot project.
