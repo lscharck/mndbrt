@@ -42,12 +42,12 @@ void genset(dim *dimensions, uint8_t *image)
             }
             else {
                 n = (cnt - half) / half;
-                image[idx] = 255 * fmax(0.7059 * pow(n, 3) - 1.1513 * pow(n, 2)
-                        - 0.6120 * n + 1.0268, 0);
-                image[idx + 1] = 255 * fmax(-9.7219 * pow(n, 4) + 14.7144 * pow(n, 3)
-                        - 7.1107 * pow(n, 2) + 1.2479 * n + 0.8593, 0);
-                image[idx + 2] = 255 * fmax(-25.3733 * pow(n, 4) + 49.1936 * pow(n, 3)
-                        - 28.0684 * pow(n, 2) + 4.8988 * n - 0.0501, 0);
+                image[idx] = 255 * fmin(fmax(0.6118 * pow(n, 3) - 0.2286 * pow(n, 2)
+                        - 01.3475 * n + 0.9493, 0), 1);
+                image[idx + 1] = 255 * fmin(fmax(0.3465 * pow(n, 4) - 4.646 * pow(n, 3)
+                        + 4.1957 * pow(n, 2) - 0.5881 * n + 0.8365, 0), 1);
+                image[idx + 2] = 255 * fmin(fmax(-36.6545 * pow(n, 4) + 70.2973 * pow(n, 3)
+                        - 40.0717 * pow(n, 2) + 6.8002 * n - 0.0272, 0), 1);
             }
 
             idx+=3;
