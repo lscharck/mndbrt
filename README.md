@@ -42,6 +42,12 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
      - Uses a normalized iteration function
      - Smooths the iteration count
      - Reduces harsh "*banding*"
+     - Much more complicated
+    - Histogram:
+      - Uses a histogram of iterations
+      - Applies a linear color map to the histogram values from smallest iteration to largest iteration
+      - smooth
+      - Slow and annoying to implement
 2. Distance Algorithm
 - Based on the distance from neighboring points
   - Distance estimator algorithm:
