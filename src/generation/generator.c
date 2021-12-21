@@ -30,10 +30,6 @@ void genset(dim *dimensions, uint8_t *image)
                 cnt++;
             }
 
-            //scale = cnt + 1 - log10(log2(cabs(z)));
-            //scale = (double)cnt / MAXINTER;
-            //if (scale > 1) printf("scale: %f", scale);
-
             if (cnt == MAXINTER) {
                 image[idx] = 0;
                 image[idx + 1] = 0;
