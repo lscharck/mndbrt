@@ -19,9 +19,9 @@ void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex 
 
     // inital check for thres
     if (dwell >= MAXINTER) {
-        image[idx] = 0;
-        image[idx + 1] = 0;
-        image[idx + 2] = 0;
+        image[idx] = 255;
+        image[idx + 1] = 255;
+        image[idx + 2] = 255;
         idx+=3;
         return;
     }
