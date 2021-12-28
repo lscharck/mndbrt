@@ -7,6 +7,7 @@
 #include <inttypes.h>
 #include <limits.h>
 #include <math.h>
+#include <pthread.h>
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -21,6 +22,7 @@
 #define HDRLEN 18
 #define UPPER 100000
 #define TIME 1000000000.0
+#define MAXTHREAD 8
 typedef void (*conversion)(char *, void *);
 
 typedef struct
@@ -34,9 +36,23 @@ typedef struct
     uint16_t height;
 }dim;
 
+typedef struct
+{
+    double x1;
+    double y1;
+    double xscale;
+    double yscale;
+    uint8_t *image;
+    uint16_t width;
+    uint16_t height;
+    uint8_t thread_no;
+}genset_pack;
+
 void convd(char *src, void *dst);
 
 void convl(char *src, void *dst);
+
+void dispatch(dim *dimensions, uint8_t *image);
 
 void error(const char *msg) __attribute__((noreturn));
 
@@ -44,9 +60,9 @@ void error_check(char *src, void *dst, void (*conv) (char *, void *));
 
 void fio(dim *dimensions);
 
-void genset(dim *dimensions, uint8_t *image);
+void *genset(void *info);
 
-void put_color(uint8_t *image, double pixel_scale, uint16_t n, double complex z, double complex dz);
+void put_color(uint8_t *image, double pixel_scale, uint16_t n, double complex z, double complex dz, uint32_t idx);
 
 void setup(int argc, char **argv, dim *dimensions);
 
