@@ -1,9 +1,8 @@
 #include "adds.h"
 
-void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex z, double complex dz)
+void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex z, double complex dz, uint32_t idx)
 {
 
-    static uint32_t idx = 0;
     double D, dwell, finalrad, finalang;
     double dscale, value, P;
     double angle, radius;
@@ -22,7 +21,6 @@ void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex 
         image[idx] = 255;
         image[idx + 1] = 255;
         image[idx + 2] = 255;
-        idx+=3;
         return;
     }
 
@@ -43,7 +41,7 @@ void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex 
     // log scaling to thres
     P = log10(dwell) / log10(UPPER);
 
-    // remap angle and radiu onto color wheel
+    // remap angle and radius onto color wheel
     if (P < 0.5) {
         P = 1.0 - 1.5 * P;
         angle = 1 - P;
@@ -122,7 +120,5 @@ void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex 
     image[idx] = (r + m) * 255;
     image[idx + 1] = (g + m) * 255;
     image[idx + 2] = (b + m) * 255;
-
-    idx+=3;
 
 }
