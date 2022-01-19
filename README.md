@@ -57,3 +57,9 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
     - Much more visually pleasing
     - Utilizes hue saturation and brightness which *feels* more balanced
     - Better at displaying the filaments
+
+TODO: make the image array into a ADT with the following features - 
+1. The application (put_pixle) has no clue what a image array is.
+2. The application (put_pixle) adds pixles with an "add" method; a polymorphic function
+3. The application (gen_set) will call "new" to create a new instace of the image class ie. an image object
+4. The ADT should represent the image class as a struct so more information can be added such as index no.
