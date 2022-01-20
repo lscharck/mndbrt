@@ -1,29 +1,25 @@
 #include "adds.h"
 
-void genset(dim *dimensions, uint8_t *image)
+void *genset(void *info)
 {
 
-    uint16_t width, height, cnt;
-    double x1, y1, x2, y2, xscale, yscale;
+    double x1 = ((genset_pack*)info)->x1;
+    double y1 = ((genset_pack*)info)->y1;
+    double xscale = ((genset_pack*)info)->xscale;
+    double yscale = ((genset_pack*)info)->yscale;
+    uint8_t *image = ((genset_pack*)info)->image;
+    uint16_t width = ((genset_pack*)info)->width;
+    uint16_t height = ((genset_pack*)info)->height;
+    uint8_t thread_idx = ((genset_pack*)info)->thread_no;
+
+    uint16_t cnt;
+    uint32_t image_idx;
     double complex z, dz, c;
-    double cpu_time = 0.0;
 
-    struct timespec start, finish;
+    for (uint16_t y = thread_idx; y < height; y+=MAXTHREAD) {
 
-    width = dimensions->width;
-    height = dimensions->height;
+        image_idx = y * width * 3;
 
-    x1 = dimensions->x1;
-    y1 = dimensions->y1;
-    x2 = dimensions->x2;
-    y2 = dimensions->y2;
-
-    xscale = (x2 - x1) / (width - 1);
-    yscale = (y2 - y1) / (height - 1);
-
-    clock_gettime(CLOCK_MONOTONIC, &start);
-
-    for (uint16_t y = 0; y < height; y++) {
         for (uint16_t x = 0; x < width; x++) {
 
             cnt = 0;
@@ -36,17 +32,14 @@ void genset(dim *dimensions, uint8_t *image)
                 cnt++;
             }
 
-            put_color(image, xscale, cnt, z, dz);
+            put_color(image, xscale, cnt, z, dz, image_idx);
+
+            image_idx+=3;
 
         }
 
     }
 
-    clock_gettime(CLOCK_MONOTONIC, &finish);
-
-    cpu_time = (finish.tv_sec - start.tv_sec);
-    cpu_time += (finish.tv_nsec - start.tv_nsec) / TIME;
-
-    printf("CPU Time: %f seconds", cpu_time);
+    return NULL;
 
 }

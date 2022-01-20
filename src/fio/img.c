@@ -26,7 +26,7 @@ void fio(dim *dimensions)
 
     strncpy((char*)img, header, HDRLEN);
 
-    genset(dimensions, img + h_size);
+    dispatch(dimensions, img + h_size);
 
     msync(img, size, MS_SYNC);
     munmap(img, size);
