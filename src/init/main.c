@@ -3,7 +3,8 @@
 int main(int argc, char **argv)
 {
 
-    //TODO add more color pallets, improve algorithms, vectors, ADT for image
+    //TODO add more color pallets, improve algorithms, vectors intrinsics
+    // ADT for image, ADT for color function
 
     dim dimensions;
 
