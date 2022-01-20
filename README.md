@@ -63,3 +63,4 @@ TODO: make the image array into a ADT with the following features -
 2. The application (put_pixle) adds pixles with an "add" method; a polymorphic function
 3. The application (gen_set) will call "new" to create a new instace of the image class ie. an image object
 4. The ADT should represent the image class as a struct so more information can be added such as index no.
+5. The ADT should create only one image and maintain only one, however there should be multilple image objects
