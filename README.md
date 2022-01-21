@@ -66,3 +66,4 @@ TODO: make the image array into a ADT with the following features -
 5. The ADT should create only one image and maintain only one, however there should be multilple image objects
 6. The ADT should be able to handle multiple thread calls to "new" ie. the first call makes the image with "fio" subsequent calls forgo "fio"
 7. The call to "fio" should take place in the "constructor" and the "destructor" should undo "fio"
+8. The call to "new" should be variatic and should take the image dimensions
