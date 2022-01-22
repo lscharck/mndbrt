@@ -8,7 +8,7 @@ void dispatch(dim *dimensions)
     double xscale, yscale;
     double cpu_time = 0.0;
 
-    genset_pack index[MAXTHREAD];
+    genset_info index[MAXTHREAD];
     pthread_t threads[MAXTHREAD];
     pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
     struct timespec start, finish;
