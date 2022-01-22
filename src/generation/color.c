@@ -18,9 +18,6 @@ void put_color(void *a, double pixel_spacing, uint16_t n, double complex z, doub
 
     // inital check for thres
     if (dwell >= MAXINTER) {
-        //image[idx] = 255;
-        //image[idx + 1] = 255;
-        //image[idx + 2] = 255;
         add(a, 255, 255, 255);
         return;
     }
@@ -118,9 +115,6 @@ void put_color(void *a, double pixel_spacing, uint16_t n, double complex z, doub
     }
 
     // assign to image
-    //image[idx] = (r + m) * 255;
-    //image[idx + 1] = (g + m) * 255;
-    //image[idx + 2] = (b + m) * 255;
     add(a, (r + m) * 255, (g + m) * 255, (b + m) * 255);
 
 }
