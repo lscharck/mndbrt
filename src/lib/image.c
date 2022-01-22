@@ -25,7 +25,7 @@ static void *image_ctor(void *_self, va_list *app)
 {
 
     struct Image *self = _self;
-    struct image_info *image_p = image_n;
+    struct image_info **image_p = (struct image_info**)&image_n;
 
     self->thread_no = (uint8_t)va_arg(*app, int);
     uint16_t width = self->width = (uint16_t)va_arg(*app, int);
@@ -33,11 +33,11 @@ static void *image_ctor(void *_self, va_list *app)
     self->indx = self->thread_no * width * 3;
 
     if (!image_n) {
-        image_p = image_n = image_fio(width, height);
+        image_n = image_fio(width, height);
     }
 
-    self->image = image_p->image;
-    ++image_p->cnt;
+    self->image = (*image_p)->image;
+    ++(*image_p)->cnt;
 
     return self;
 
