@@ -9,6 +9,6 @@ int main(int argc, char **argv)
 
     setup(argc, argv, &dimensions);
 
-    fio(&dimensions);
+    dispatch(&dimensions);
 
 }
