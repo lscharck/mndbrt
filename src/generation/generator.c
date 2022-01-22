@@ -3,18 +3,24 @@
 void *genset(void *info)
 {
 
-    double x1 = ((genset_pack*)info)->x1;
-    double y1 = ((genset_pack*)info)->y1;
-    double xscale = ((genset_pack*)info)->xscale;
-    double yscale = ((genset_pack*)info)->yscale;
-    uint8_t *image = ((genset_pack*)info)->image;
-    uint16_t width = ((genset_pack*)info)->width;
-    uint16_t height = ((genset_pack*)info)->height;
-    uint8_t thread_idx = ((genset_pack*)info)->thread_no;
+    genset_info *info_p = info;
+
+    double x1 = info_p->x1;
+    double y1 = info_p->y1;
+    double xscale = info_p->xscale;
+    double yscale = info_p->yscale;
+    pthread_mutex_t *lock = info_p->lock;
+    uint16_t width = info_p->width;
+    uint16_t height = info_p->height;
+    uint8_t thread_idx = info_p->thread_no;
 
     uint16_t cnt;
     uint32_t image_idx;
     double complex z, dz, c;
+
+    pthread_mutex_lock(lock);
+    void *a = new(Image, thread_idx, width, height);
+    pthread_mutex_unlock(lock);
 
     for (uint16_t y = thread_idx; y < height; y+=MAXTHREAD) {
 
@@ -32,13 +38,17 @@ void *genset(void *info)
                 cnt++;
             }
 
-            put_color(image, xscale, cnt, z, dz, image_idx);
+            put_color(a, xscale, cnt, z, dz, image_idx);
 
             image_idx+=3;
 
         }
 
     }
+
+    pthread_mutex_lock(lock);
+    delete(a);
+    pthread_mutex_unlock(lock);
 
     return NULL;
 
