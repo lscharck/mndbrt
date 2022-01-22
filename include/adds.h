@@ -2,24 +2,19 @@
 #define DEV_H
 
 #include <complex.h>
-#include <fcntl.h>
 #include <float.h>
 #include <inttypes.h>
 #include <limits.h>
 #include <math.h>
 #include <pthread.h>
-#include <sys/mman.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
+#include <string.h>
 #include <time.h>
-#include <unistd.h>
+#include "new.h"
 #define MAXINTER 2048
 #define ESCAPE 2
 #define CHANNEL 3
-#define HDRLEN 18
 #define UPPER 100000
 #define TIME 1000000000.0
 #define MAXTHREAD 8
@@ -42,27 +37,25 @@ typedef struct
     double y1;
     double xscale;
     double yscale;
-    uint8_t *image;
+    pthread_mutex_t *lock;
     uint16_t width;
     uint16_t height;
     uint8_t thread_no;
-}genset_pack;
+}genset_info;
 
 void convd(char *src, void *dst);
 
 void convl(char *src, void *dst);
 
-void dispatch(dim *dimensions, uint8_t *image);
+void dispatch(dim *dimensions);
 
 void error(const char *msg) __attribute__((noreturn));
 
 void error_check(char *src, void *dst, void (*conv) (char *, void *));
 
-void fio(dim *dimensions);
-
 void *genset(void *info);
 
-void put_color(uint8_t *image, double pixel_scale, uint16_t n, double complex z, double complex dz, uint32_t idx);
+void put_color(void *a, double pixel_scale, uint16_t n, double complex z, double complex dz, uint32_t idx);
 
 void setup(int argc, char **argv, dim *dimensions);
 
