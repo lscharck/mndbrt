@@ -1,6 +1,6 @@
 #include "adds.h"
 
-void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex z, double complex dz, uint32_t idx)
+void put_color(void *a, double pixel_spacing, uint16_t n, double complex z, double complex dz, uint32_t idx)
 {
 
     double D, dwell, finalrad, finalang;
@@ -18,9 +18,10 @@ void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex 
 
     // inital check for thres
     if (dwell >= MAXINTER) {
-        image[idx] = 255;
-        image[idx + 1] = 255;
-        image[idx + 2] = 255;
+        //image[idx] = 255;
+        //image[idx + 1] = 255;
+        //image[idx + 2] = 255;
+        add(a, 255, 255, 255);
         return;
     }
 
@@ -117,8 +118,9 @@ void put_color(uint8_t *image, double pixel_spacing, uint16_t n, double complex 
     }
 
     // assign to image
-    image[idx] = (r + m) * 255;
-    image[idx + 1] = (g + m) * 255;
-    image[idx + 2] = (b + m) * 255;
+    //image[idx] = (r + m) * 255;
+    //image[idx + 1] = (g + m) * 255;
+    //image[idx + 2] = (b + m) * 255;
+    add(a, (r + m) * 255, (g + m) * 255, (b + m) * 255);
 
 }
