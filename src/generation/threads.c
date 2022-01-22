@@ -1,6 +1,6 @@
 #include "adds.h"
 
-void dispatch(dim *dimensions, uint8_t *img)
+void dispatch(dim *dimensions)
 {
 
     uint16_t width, height;
@@ -10,6 +10,7 @@ void dispatch(dim *dimensions, uint8_t *img)
 
     genset_pack index[MAXTHREAD];
     pthread_t threads[MAXTHREAD];
+    pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
     struct timespec start, finish;
 
     width = dimensions->width;
@@ -31,7 +32,7 @@ void dispatch(dim *dimensions, uint8_t *img)
         index[i].y1 = y1;
         index[i].xscale = xscale;
         index[i].yscale = yscale;
-        index[i].image = img;
+        index[i].lock = &lock;
         index[i].width = width;
         index[i].height = height;
         index[i].thread_no = i;
@@ -54,5 +55,7 @@ void dispatch(dim *dimensions, uint8_t *img)
     cpu_time += (finish.tv_nsec - start.tv_nsec) / TIME;
 
     printf("CPU Time: %f seconds", cpu_time);
+
+    pthread_mutex_destroy(&lock);
 
 }
