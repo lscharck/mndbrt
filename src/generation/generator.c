@@ -3,7 +3,7 @@
 void *genset(void *info)
 {
 
-    genset_info *info_p = info;
+    genset_t *info_p = info;
 
     double x1 = info_p->x1;
     double y1 = info_p->y1;

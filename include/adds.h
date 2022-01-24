@@ -29,7 +29,7 @@ typedef struct
 
     uint16_t width;
     uint16_t height;
-}dim;
+}dim_t;
 
 typedef struct
 {
@@ -41,13 +41,13 @@ typedef struct
     uint16_t width;
     uint16_t height;
     uint8_t thread_no;
-}genset_info;
+}genset_t;
 
 void convd(char *src, void *dst);
 
 void convl(char *src, void *dst);
 
-void dispatch(dim *dimensions);
+void dispatch(dim_t *dimensions);
 
 void error(const char *msg) __attribute__((noreturn));
 
@@ -57,6 +57,6 @@ void *genset(void *info);
 
 void put_color(void *a, double pixel_scale, uint16_t n, double complex z, double complex dz, uint32_t idx);
 
-void setup(int argc, char **argv, dim *dimensions);
+void setup(int argc, char **argv, dim_t *dimensions);
 
 #endif // DEV_H

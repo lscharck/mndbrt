@@ -19,21 +19,21 @@ static const struct Class _Image = {
 
 const void *Image = &_Image;
 
-void *image_n = NULL;
+void *image_info = NULL;
 
 static void *image_ctor(void *_self, va_list *app)
 {
 
     struct Image *self = _self;
-    struct image_info **image_p = (struct image_info**)&image_n;
+    struct image_t **image_p = (struct image_t**)&image_info;
 
     self->thread_no = (uint8_t)va_arg(*app, int);
     uint16_t width = self->width = (uint16_t)va_arg(*app, int);
     uint16_t height = self->height = (uint16_t)va_arg(*app, int);
     self->indx = self->thread_no * width * 3;
 
-    if (!image_n) {
-        image_n = image_fio(width, height);
+    if (!image_info) {
+        image_fio(image_p, width, height);
     }
 
     self->image = (*image_p)->image;
@@ -47,7 +47,7 @@ static void *image_dtor(void *_self)
 {
 
     struct Image *self = _self;
-    struct image_info *image_p = image_n;
+    struct image_t *image_p = image_info;
 
     if (--image_p->cnt == 0) {
         msync(image_p->image, image_p->size, MS_SYNC);

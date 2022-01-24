@@ -14,7 +14,7 @@
 #include "new.h"
 #define HDRLEN 18
 
-struct image_info
+struct image_t
 {
     uint8_t *image;
     uint32_t size;
@@ -34,6 +34,6 @@ static void *image_clone(const void *self);
 
 static int image_differ(const void *self, const void *b);
 
-void *image_fio(uint16_t width, uint16_t height);
+void image_fio(struct image_t **image_p, uint16_t width, uint16_t height);
 
 #endif // IMAGE_H

@@ -1,12 +1,11 @@
 #include "image.h"
 
-void *image_fio(uint16_t width, uint16_t height)
+void image_fio(struct image_t **image_p, uint16_t width, uint16_t height)
 {
 
     int f;
     uint8_t *img;
     uint32_t size, header_size;
-    struct image_info *image_p = NULL;
     char *header = calloc(1, sizeof(char) * HDRLEN);
     const char *path = "/Users/lukescharck/Documents/output.ppm";
 
@@ -22,12 +21,10 @@ void *image_fio(uint16_t width, uint16_t height)
 
     strncpy((char*)img, header, HDRLEN);
 
-    image_p = calloc(1, sizeof(struct image_info));
-    image_p->image = img + header_size;
-    image_p->size = size;
-    image_p->f = f;
-    image_p->cnt = 0;
-
-    return image_p;
+    *image_p = calloc(1, sizeof(struct image_t));
+    (*image_p)->image = img + header_size;
+    (*image_p)->size = size;
+    (*image_p)->f = f;
+    (*image_p)->cnt = 0;
 
 }
