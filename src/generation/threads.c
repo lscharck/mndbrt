@@ -1,6 +1,6 @@
 #include "adds.h"
 
-void dispatch(dim *dimensions, uint8_t *img)
+void dispatch(dim_t *dimensions, uint8_t *img)
 {
 
     uint16_t width, height;
@@ -8,7 +8,7 @@ void dispatch(dim *dimensions, uint8_t *img)
     double xscale, yscale;
     double cpu_time = 0.0;
 
-    genset_pack index[MAXTHREAD];
+    genset_t index[MAXTHREAD];
     pthread_t threads[MAXTHREAD];
     struct timespec start, finish;
 

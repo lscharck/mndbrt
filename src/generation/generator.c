@@ -3,14 +3,16 @@
 void *genset(void *info)
 {
 
-    double x1 = ((genset_pack*)info)->x1;
-    double y1 = ((genset_pack*)info)->y1;
-    double xscale = ((genset_pack*)info)->xscale;
-    double yscale = ((genset_pack*)info)->yscale;
-    uint8_t *image = ((genset_pack*)info)->image;
-    uint16_t width = ((genset_pack*)info)->width;
-    uint16_t height = ((genset_pack*)info)->height;
-    uint8_t thread_idx = ((genset_pack*)info)->thread_no;
+    genset_t *info_p = info;
+
+    double x1 = info_p->x1;
+    double y1 = info_p->y1;
+    double xscale = info_p->xscale;
+    double yscale = info_p->yscale;
+    uint8_t *image = info_p->image;
+    uint16_t width = info_p->width;
+    uint16_t height = info_p->height;
+    uint8_t thread_idx = info_p->thread_no;
 
     uint16_t cnt;
     uint32_t image_idx;

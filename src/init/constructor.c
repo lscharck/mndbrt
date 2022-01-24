@@ -1,6 +1,6 @@
 #include "adds.h"
 
-void setup(int argc, char **argv, dim *dimensions)
+void setup(int argc, char **argv, dim_t *dimensions)
 {
 
     if (argc != 7) {

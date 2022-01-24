@@ -1,6 +1,6 @@
 #include "adds.h"
 
-void fio(dim *dimensions)
+void fio(dim_t *dimensions)
 {
 
     int f;
