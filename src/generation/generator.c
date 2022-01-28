@@ -33,7 +33,7 @@ void *genset(void *info)
                 cnt++;
             }
 
-            put_color(image, cnt, z,image_idx);
+            put_color(image, cnt, image_idx, trig);
 
             image_idx+=3;
 
