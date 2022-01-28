@@ -1,6 +1,11 @@
 #include "adds.h"
 
-void put_color(uint8_t *image, uint16_t cnt, double complex z, uint32_t idx)
+void put_color(uint8_t *image, uint16_t cnt, uint32_t idx, coloring_schem color_func)
+{
+    color_func(image, cnt, idx);
+}
+
+void pcwise(uint8_t *image, uint16_t cnt, uint32_t idx)
 {
 
     double n, half = MAXINTER / 2.0;
@@ -25,5 +30,22 @@ void put_color(uint8_t *image, uint16_t cnt, double complex z, uint32_t idx)
         image[idx + 2] = 255 * fmin(fmax(-36.6545 * pow(n, 4) + 70.2973 * pow(n, 3)
                 - 40.0717 * pow(n, 2) + 6.8002 * n - 0.0272, 0), 1);
     }
+
+}
+
+void trig(uint8_t *image, uint16_t n, uint32_t idx)
+{
+
+    float a = 0.1f;
+    double r, g, b;
+
+    r = 0.5f * sin(a * n) + 0.5f;
+    g = 0.5f * sin(a * n + 2.094f) + 0.5f;
+    b = 0.5f * sin(a * n + 4.188f) + 0.5f;
+
+    // assign to image
+    image[idx] = (uint8_t)(r * 255) % 255;
+    image[idx + 1] = (uint8_t)(g * 255) % 255;
+    image[idx + 2] = (uint8_t)(b * 255) % 255;
 
 }
