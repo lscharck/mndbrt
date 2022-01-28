@@ -24,6 +24,7 @@
 #define TIME 1000000000.0
 #define MAXTHREAD 8
 typedef void (*conversion)(char *, void *);
+typedef void (*coloring_schem)(uint8_t *image, uint16_t n, uint32_t idx);
 
 typedef struct
 {
@@ -62,7 +63,11 @@ void fio(dim_t *dimensions);
 
 void *genset(void *info);
 
-void put_color(uint8_t *image, uint16_t n, double complex z, uint32_t idx);
+void put_color(uint8_t *image, uint16_t n, uint32_t idx, coloring_schem color_func);
+
+void pcwise(uint8_t *image, uint16_t n, uint32_t idx);
+
+void trig(uint8_t *image, uint16_t n, uint32_t idx);
 
 void setup(int argc, char **argv, dim_t *dimensions);
 
