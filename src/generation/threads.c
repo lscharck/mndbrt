@@ -53,6 +53,6 @@ void dispatch(dim_t *dimensions, uint8_t *img)
     cpu_time = (finish.tv_sec - start.tv_sec);
     cpu_time += (finish.tv_nsec - start.tv_nsec) / TIME;
 
-    printf("CPU Time: %f seconds", cpu_time);
+    printf("Wall Time: %f seconds", cpu_time);
 
 }
