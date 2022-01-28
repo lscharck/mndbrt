@@ -62,7 +62,7 @@ void fio(dim_t *dimensions);
 
 void *genset(void *info);
 
-void put_color(uint8_t *image, double pixel_scale, uint16_t n, double complex z, double complex dz, uint32_t idx);
+void put_color(uint8_t *image, uint16_t n, double complex z, uint32_t idx);
 
 void setup(int argc, char **argv, dim_t *dimensions);
 

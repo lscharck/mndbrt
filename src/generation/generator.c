@@ -16,7 +16,7 @@ void *genset(void *info)
 
     uint16_t cnt;
     uint32_t image_idx;
-    double complex z, dz, c;
+    double complex z, c;
 
     for (uint16_t y = thread_idx; y < height; y+=MAXTHREAD) {
 
@@ -26,15 +26,14 @@ void *genset(void *info)
 
             cnt = 0;
             c = CMPLX(x1 + (x * xscale), y1 + (y * yscale));
-            z = dz = CMPLX(0.0, 0.0);
+            z = CMPLX(0.0, 0.0);
 
             while (cabs(z) < ESCAPE && cnt < MAXINTER) {
-                dz = (2 * z * dz) + 1;
                 z = (z * z) + c;
                 cnt++;
             }
 
-            put_color(image, xscale, cnt, z, dz, image_idx);
+            put_color(image, cnt, z,image_idx);
 
             image_idx+=3;
 
