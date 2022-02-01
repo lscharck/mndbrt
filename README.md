@@ -60,8 +60,8 @@ Currently main uses the distance algorithm and chromatic uses the classic escapc
     - Better at displaying the filaments
 
 ### TODO ###
-- Make the image array into a ADT 
-   - The image ADT "should" statments
+#### Make the image array into a ADT ####
+The image ADT "should" statments
 1. The application (put_pixle) should have no access to what an image array is
 2. The application (put_pixle) adds pixles with an "add" method; a polymorphic function
 3. The application (genset) will call "new" to create a new instace of the image class ie. an image object
@@ -71,5 +71,5 @@ Currently main uses the distance algorithm and chromatic uses the classic escapc
 7. The call to "fio" should take place in the "constructor" and the "destructor" should undo "fio"
 8. The call to "new" should be variatic and should take the image dimensions
 
-- Make the color function into a ADT (theoretical)
+#### Make the color function into a ADT (theoretical) ####
 
