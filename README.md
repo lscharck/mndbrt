@@ -58,7 +58,7 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
     - Utilizes hue saturation and brightness which *feels* more balanced
     - Better at displaying the filaments
 
-## TODO ## 
+### TODO ###
 - Make the image array into a ADT with the image ADT "should" statments
 1. The application (put_pixle) should have no access to what an image array is
 2. The application (put_pixle) adds pixles with an "add" method; a polymorphic function
