@@ -8,7 +8,8 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
 - Z_(n+1) = (Z_n)^2 + c
 
 ## Coloring Schemes ##
-1. Escape Algorithms
+Currently main uses the distance algorithm and chromatic uses the classic escapce algorithms with a polynomail and a non-linear variant
+1. Classic Escape Algorithms
 - Based on number of iterations until the point escapes the orbit
    - Black and White:
      - Uses only two colors
@@ -59,7 +60,8 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
     - Better at displaying the filaments
 
 ### TODO ###
-- Make the image array into a ADT with the image ADT "should" statments
+- Make the image array into a ADT 
+   - The image ADT "should" statments
 1. The application (put_pixle) should have no access to what an image array is
 2. The application (put_pixle) adds pixles with an "add" method; a polymorphic function
 3. The application (genset) will call "new" to create a new instace of the image class ie. an image object
