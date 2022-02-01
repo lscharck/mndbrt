@@ -59,8 +59,7 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
     - Better at displaying the filaments
 
 ## TODO ## 
-- Make the image array into a ADT
-The image ADT "should" statments
+- Make the image array into a ADT with the image ADT "should" statments
 1. The application (put_pixle) should have no access to what an image array is
 2. The application (put_pixle) adds pixles with an "add" method; a polymorphic function
 3. The application (genset) will call "new" to create a new instace of the image class ie. an image object
