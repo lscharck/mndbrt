@@ -10,7 +10,7 @@ struct Class
     void * (*ctor) (void *self, va_list *app);
     void * (*dtor) (void *self);
     void * (*clone) (const void *self);
-    int (*add) (const void *self, va_list *app);
+    int (*add) (void *self, va_list *app);
     int (*differ) (const void *self, const void *b);
 };
 

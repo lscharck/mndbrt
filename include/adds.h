@@ -11,13 +11,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "image.h"
 #include "new.h"
 #define MAXINTER 2048
 #define ESCAPE 2
 #define CHANNEL 3
 #define UPPER 100000
 #define TIME 1000000000.0
-#define MAXTHREAD 8
+#define MAXTHREAD 3
 typedef void (*conversion)(char *, void *);
 
 typedef struct
@@ -37,7 +38,8 @@ typedef struct
     double y1;
     double xscale;
     double yscale;
-    pthread_mutex_t *lock;
+    pthread_mutex_t *lock_1;
+    pthread_mutex_t *lock_2;
     uint16_t width;
     uint16_t height;
     uint8_t thread_no;

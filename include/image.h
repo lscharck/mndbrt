@@ -19,7 +19,7 @@ struct image_t
     uint8_t *image;
     uint32_t size;
     int f;
-    uint8_t cnt;
+    int8_t cnt;
 };
 
 extern const void *Image; // pointer to image class type
@@ -28,7 +28,7 @@ static void *image_ctor(void *self, va_list *app);
 
 static void *image_dtor(void *self);
 
-static int image_add(const void *self, va_list *app);
+static int image_add(void *self, va_list *app);
 
 static void *image_clone(const void *self);
 

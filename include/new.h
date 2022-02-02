@@ -5,14 +5,13 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
-#include "image.h"
 #include "types.h"
 
 void *new(const void *type, ...);
 
 void delete(void *item);
 
-int add(const void *self, ...);
+int add(void *self, ...);
 
 void *clone(const void *self);
 

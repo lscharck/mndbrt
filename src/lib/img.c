@@ -1,6 +1,6 @@
 #include "image.h"
 
-void image_fio(struct image_t **image_p, uint16_t width, uint16_t height)
+void image_fio(struct image_t **image_info, uint16_t width, uint16_t height)
 {
 
     int f;
@@ -16,15 +16,16 @@ void image_fio(struct image_t **image_p, uint16_t width, uint16_t height)
 
     f = open(path, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
     if (f < 0) {printf("Error opening out file\n");}
+
     img = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, f, 0);
     if (ftruncate(f, size) < 0) {printf("Error extending file\n");}
 
     strncpy((char*)img, header, HDRLEN);
 
-    *image_p = calloc(1, sizeof(struct image_t));
-    (*image_p)->image = img + header_size;
-    (*image_p)->size = size;
-    (*image_p)->f = f;
-    (*image_p)->cnt = 0;
+    *image_info = calloc(1, sizeof(struct image_t));
+    (*image_info)->image = img + header_size;
+    (*image_info)->size = size;
+    (*image_info)->f = f;
+    (*image_info)->cnt = 0;
 
 }

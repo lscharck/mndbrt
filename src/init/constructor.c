@@ -3,6 +3,7 @@
 void setup(int argc, char **argv, dim_t *dimensions)
 {
 
+    // check inputs from args and assign them to dimensions struct
     if (argc != 7) {
         error("Usage: mndbrt w h x1 y1 x2 y2");
     }
@@ -31,7 +32,7 @@ void error_check(char *src, void *dst, conversion conv)
 void convl(char *src, void *dst)
 {
     char *endptr = NULL;
-    int base = 10;
+    const int base = 10;
     long n;
     uint16_t *dest = dst;
 

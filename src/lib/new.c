@@ -38,7 +38,7 @@ void delete(void *self)
 
 }
 
-int add(const void *self, ...)
+int add(void *self, ...)
 {
 
     const struct Class * const * cp = self;
