@@ -61,7 +61,7 @@ Currently main uses the distance algorithm and chromatic uses the classic escapc
 
 ### TODO ###
 #### Make the image array into a ADT ####
-The image ADT functional requirements (shall statments)
+The image ADT functional requirements (shall statments):
 1. The application (put_pixle) shall have no access to what an image array is
 2. The application (put_pixle) shall add pixles with an "add" method; a polymorphic function
 3. The application (genset) shall call "new" to create a new instace of the image class ie. an image object
