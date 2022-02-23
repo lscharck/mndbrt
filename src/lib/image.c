@@ -55,7 +55,7 @@ static void *image_dtor(void *_self)
 
     printf("in dtor\n");
     if (--image_info->cnt == 0) {
-        printf("closeing image\n");
+        printf("closing image\n");
         msync(image_info->image, image_info->size, MS_SYNC);
         munmap(image_info->image, image_info->size);
         close(image_info->f);
