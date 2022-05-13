@@ -1,5 +1,5 @@
 # mndbrt
-Offical repository of the Mandelbrot project.
+Repository for the Mandelbrot project.
 
 ## Mandelbrot ##
 M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
@@ -7,8 +7,15 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
 - Z_o = 0 + 0i
 - Z_(n+1) = (Z_n)^2 + c
 
+## Getting Started 
+This project generates an image of the Mandelbrot set given the viewing coordinates and an image size. The program can be compiled by using cmake and make in the build directory. The program "mndbrt" can be supplied with the image coordinates from the command line. The output is a bitmap of the Mandelbrot set that can be opened and exported by most media software. A sample of what the program can produce is provided below.
+
+<p align="center">
+  <img src="https://github.com/lscharck/mndbrt/blob/main/sample." width=50% height=50% />
+</p>
+
 ## Coloring Schemes ##
-Currently main uses the distance algorithm and chromatic uses the classic escapce algorithms with a polynomail and a non-linear variant
+Currently main uses the [distance algorithm](http://mrob.com/pub/muency/algorithms.html) adapted from the corresponding website and chromatic uses the classic escapce algorithms with a polynomail and a non-linear variant. A brief introduction to the various coloring schemes is presented below.
 1. Classic Escape Algorithms
 - Based on number of iterations until the point escapes the orbit
    - Black and White:
@@ -58,6 +65,7 @@ Currently main uses the distance algorithm and chromatic uses the classic escapc
     - Much more visually pleasing
     - Utilizes hue saturation and brightness which *feels* more balanced
     - Better at displaying the filaments
+    - This algorithm borrowes ideas from this [website](http://mrob.com/pub/muency/algorithms.html)
 
 ### TODO ###
 #### Make the image array into a ADT ####
@@ -72,4 +80,3 @@ The image ADT functional requirements (shall statments):
 8. The call to "new" shall be variatic and should take the image dimensions
 
 #### Make the color function into a ADT (theoretical) ####
-
