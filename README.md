@@ -26,7 +26,7 @@ Currently main uses the [distance algorithm](http://mrob.com/pub/muency/algorith
      - Uses a linear transformation to map iterations to a color 
      - Typically maps the single interation value into a rgb triplet
      - Usally an interpolating function is used to produce a linear gradient
-     - Easy to understant and implement
+     - Easy to understand and implement
      - Produces unfavorable wide "*bands*" when the iteration count changes slowly at low iteration values
      - Produces unfavorable rapid short "*bands*" when the iteration count changes rapidly at high iteration values
    - Polynomial color function:
