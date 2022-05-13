@@ -11,7 +11,7 @@ M = {c ∈ ℂ | lim Z_n (n -> ∞) ≠ ∞}
 This project generates an image of the Mandelbrot set given the viewing coordinates and an image size. The program can be compiled by using cmake and make in the build directory. The program "mndbrt" can be supplied with the image coordinates from the command line. The output is a bitmap of the Mandelbrot set that can be opened and exported by most media software. A sample of what the program can produce is provided below.
 
 <p align="center">
-  <img src="https://github.com/lscharck/mndbrt/blob/main/seahorse.heic" width=50% height=50% />
+  <img src="https://github.com/lscharck/mndbrt/blob/main/seahorse.jpg" width=50% height=50% />
 </p>
 
 ## Coloring Schemes ##
